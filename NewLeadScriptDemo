@@ -1,0 +1,22 @@
+    LaunchApp                   Sales
+    ClickUntil                  Recently Viewed                   Leads
+    ClickText                   New
+
+    #Verify data validation by attempting to save an incomplete form
+    UseModal                    On                          #The UseModal keyword allows us to easily target only the elements on the currently active modal. 
+    VerifyText                  New Lead
+    
+    TypeText                    First Name                  ${first}
+    TypeText                    Last Name                   ${last}
+    #Picklist                    Salutation                  Mr.
+    ClickText                   Save                        partial_match=false
+    UseModal                    Off                         #Turn off UseModal to interact with the error notification.
+    VerifyText                  We hit a snag.
+    VerifyText                  Review the following fields
+
+    #Fill in remaining fields, save form
+    UseModal                    On
+    TypeText                    Company                     ${company}
+    ClickText                   Save                        partial_match=false
+    VerifyText                  Demo McTest
+    UseModal                    Off
